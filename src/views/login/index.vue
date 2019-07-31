@@ -62,13 +62,16 @@ export default {
             method: "post",
             url: "http://ttapi.research.itcast.cn/mp/v1_0/authorizations",
             data: this.formData
-          });
+          })
+          //将响应回来的数据保存在本地
+          window.sessionStorage.setItem('token',JSON.stringify(data))
           // console.log(data)
+          this.$router.push('/')
         } else {
           console.log("登陆失败");
           return false;
         }
-      });
+      })
     }
   }
 };
