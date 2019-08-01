@@ -12,6 +12,9 @@ Vue.use(VueRouter)
 // 引入登录页组件
 import Login from '@/views/login'
 
+// 引入404组件
+import NotFound from '@/views/NotFound'
+
 
 // 配置路由规则
 
@@ -24,7 +27,8 @@ const router = new VueRouter({
   {
     path:'/',
     component:Home
-  }
+  },
+  {path:'*',component:NotFound}
 ]
 })
 
