@@ -15,6 +15,9 @@ import Login from '@/views/login'
 // 引入404组件
 import NotFound from '@/views/NotFound'
 
+//引入实验请求拦截器组件
+import Request from '@/views/request'
+
 
 // 配置路由规则
 
@@ -29,6 +32,11 @@ const router = new VueRouter({
       component: Home
     },
     {
+      path: '/request',
+      name: 'request',
+      component: Request
+    },
+    {
       path: '*',
       component: NotFound
     }
@@ -37,11 +45,11 @@ const router = new VueRouter({
 
 // 导航守卫，前置守卫
 router.beforeEach((to, from, next) => {
-   const user = window.sessionStorage.getItem('hm73')
-   if (to.path!=='/login'&&!user) {
-      return next('/login')
-   }
-   next()
+  const user = window.sessionStorage.getItem('hm73')
+  if (to.path !== '/login' && !user) {
+    return next('/login')
+  }
+  next()
 })
 
 // 导出路由规则

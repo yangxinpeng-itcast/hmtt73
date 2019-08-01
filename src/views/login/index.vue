@@ -60,7 +60,7 @@ export default {
         if (valid) {
           const { data:{data} } =await this.$axios({
             method: "post",
-            url: "http://ttapi.research.itcast.cn/mp/v1_0/authorizations",
+            url: "/authorizations",
             data: this.formData
           })
           //将响应回来的数据保存在本地
