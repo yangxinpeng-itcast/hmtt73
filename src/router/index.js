@@ -19,17 +19,29 @@ import NotFound from '@/views/NotFound'
 // 配置路由规则
 
 const router = new VueRouter({
-  routes: [
-  { path: '/login',
-    name: 'login',
-    component: Login
-  },
-  {
-    path:'/',
-    component:Home
-  },
-  {path:'*',component:NotFound}
-]
+  routes: [{
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/',
+      component: Home
+    },
+    {
+      path: '*',
+      component: NotFound
+    }
+  ]
+})
+
+// 导航守卫，前置守卫
+router.beforeEach((to, from, next) => {
+   const user = window.sessionStorage.getItem('hm73')
+   if (to.path!=='/login'&&!user) {
+      return next('/login')
+   }
+   next()
 })
 
 // 导出路由规则
